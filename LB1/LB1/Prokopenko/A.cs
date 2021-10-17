@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace LB1
+namespace Prokopenko
 {
     class solve_x1
     {

@@ -1,34 +1,27 @@
-﻿using System;
+﻿using Anton;
+using System;
 
-namespace LB1
+namespace Prokopenko
 {
     class Program
-    {
-        class A
-        {
-
-        }
-        class B : A
-        {
-            public B(object a)
-            {
-                this.a = a;
-            }
-            public object a;
-        }
-        class C : B
-        {
-            public C(object a, object b, object c) : base(a)
-            {
-                this.b = b;
-                this.c = c;
-            }
-            public object b;
-            public object c;
-        }
+    {     
         static void Main(string[] args)
         {
-            C c = new C(new A(), new A(), new B(new A()));
+            try
+            {
+                Console.WriteLine("Введите параметры: ");
+                float a = Int32.Parse(Console.ReadLine());
+                float b = Int32.Parse(Console.ReadLine());
+                float c = Int32.Parse(Console.ReadLine());
+                ProkopenkoLog.I().log($"Введено уравнение: {a}x^2 + {b}x + {c} = 0");
+                Solve_x2 Yow = new Solve_x2();
+                ProkopenkoLog.I().log("Корни уравнения " + String.Join("; ", Yow.Solve(a, b, c)));
+            }
+            catch (ProkopenkoException ex)
+            {
+                ProkopenkoLog.I().log(ex.Message);
+            }
+            ProkopenkoLog.I().write();
         }
     }
 }
